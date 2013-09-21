@@ -1,0 +1,17 @@
+﻿@{
+	ViewBag.Title = "UserCreate";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 网站管理
+}
+<div id="homewapper">
+	<div class="sysleft">
+		@{Html.RenderAction("LeftNavigation", "SysNavigation");}
+	</div>
+	<div class="sysright">
+		<h2>创建用户</h2>
+	</div>
+	<div class="clear">
+	</div>
+</div>

@@ -1,0 +1,124 @@
+﻿@using Codingwell.DevText.Controller
+@{
+	ViewBag.Title = UserContext.Instance.User.NickName + "的首页";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 动静
+}
+<div class="fl user_left">
+	@{Html.RenderAction("LeftNavigtion", "UserNavigation");}
+</div>
+<div class="fr user_right">
+	<h1 class="user_title">
+		全站动静</h1>
+	<div class="user_tab">
+		<ul>
+			<li class="now"><a href="/home/event">全站</a></li>
+			<li><a href="/home/event/blog">博客</a></li>
+			<li><a href="/home/event/question">问答</a></li>
+			<li><a href="/home/event/news">业内资讯</a></li>
+		</ul>
+	</div>
+	<div class="user_con">
+		<div class="fl">
+			<div class="user_con_left">
+				<ul class="l2_list all_list">
+					<li>
+						<div class="fl">
+							<a href="#">
+								<img src="/skin/basic/images/noavatar_small.gif" /></a></div>
+						<div class="fr">
+							<p class="all_list_title">
+								<a href="#" class="color_blue">2dan_style</a>回答问题：<a href="#" class="color_blue">语言版本不对导致SQL
+									Server 2008 R2 安装失败怎么办？</a>2012-12-25 23:12</p>
+							<div class="all_list_intro">
+								电脑里面下载了中文版的SQL Server 2008 R2 的x86、x64、ia64的企业版，文件很大，一共有5个多g了，系统是英文版的win7，在安装sql
+								server的时候，安装程序走到安装支持文件的时候就会崩溃掉。
+							</div>
+						</div>
+						<div class="clearfix">
+						</div>
+					</li>
+					<li>
+						<div class="fl">
+							<a href="#">
+								<img src="/skin/basic/images/noavatar_small.gif" /></a></div>
+						<div class="fr">
+							<p class="all_list_title">
+								<a href="#" class="color_blue">2dan_style</a>评论博客：<a href="#" class="color_blue">语言版本不对导致SQL
+									Server 2008 R2 安装失败怎么办？</a>2012-12-25 23:12</p>
+							<div class="all_list_intro">
+								电脑里面下载了中文版的SQL Server 2008 R2 的x86、x64、ia64的企业版，文件很大，一共有5个多g了，系统是英文版的win7，在安装sql
+								server的时候，安装程序走到安装支持文件的时候就会崩溃掉。
+							</div>
+						</div>
+						<div class="clearfix">
+						</div>
+					</li>
+					<li>
+						<div class="fl">
+							<a href="#">
+								<img src="/skin/basic/images/noavatar_small.png" /></a></div>
+						<div class="fr">
+							<p class="all_list_title">
+								<a href="#" class="color_blue">2dan_style</a>提出问题：<a href="#" class="color_blue">语言版本不对导致SQL
+									Server 2008 R2 安装失败怎么办？</a>2012-12-25 23:12</p>
+							<div class="all_list_intro">
+								电脑里面下载了中文版的SQL Server 2008 R2 的x86、x64、ia64的企业版，文件很大，一共有5个多g了，系统是英文版的win7，在安装sql
+								server的时候，安装程序走到安装支持文件的时候就会崩溃掉。
+							</div>
+						</div>
+						<div class="clearfix">
+						</div>
+					</li>
+					<li>
+						<div class="fl">
+							<a href="#">
+								<img src="/skin/basic/images/noavatar_small.gif" /></a></div>
+						<div class="fr">
+							<p class="all_list_title">
+								<a href="#" class="color_blue">2dan_style</a>回答问题：<a href="#" class="color_blue">语言版本不对导致SQL
+									Server 2008 R2 安装失败怎么办？</a>2012-12-25 23:12</p>
+							<div class="all_list_intro">
+								电脑里面下载了中文版的SQL Server 2008 R2 的x86、x64、ia64的企业版，文件很大，一共有5个多g了，系统是英文版的win7，在安装sql
+								server的时候，安装程序走到安装支持文件的时候就会崩溃掉。
+							</div>
+						</div>
+						<div class="clearfix">
+						</div>
+					</li>
+					<li>
+						<div class="fl">
+							<a href="#">
+								<img src="/skin/basic/images/noavatar_small.gif" /></a></div>
+						<div class="fr">
+							<p class="all_list_title">
+								<a href="#" class="color_blue">2dan_style</a>回答问题：<a href="#" class="color_blue">语言版本不对导致SQL
+									Server 2008 R2 安装失败怎么办？</a>2012-12-25 23:12</p>
+							<div class="all_list_intro">
+								电脑里面下载了中文版的SQL Server 2008 R2 的x86、x64、ia64的企业版，文件很大，一共有5个多g了，系统是英文版的win7，在安装sql
+								server的时候，安装程序走到安装支持文件的时候就会崩溃掉。
+							</div>
+						</div>
+						<div class="clearfix">
+						</div>
+					</li>
+				</ul>
+				<div class="depage">
+					<a href="#">首页</a> <a href="#">上一页</a> <a href="#" class="now">1</a> <a href="#">2</a>
+					<a href="#">3</a> <a href="#">4</a> <a href="#">下一页</a> <a href="#">尾页</a>
+				</div>
+			</div>
+		</div>
+		<div class="fr user_con_right">
+			<div id='div-gpt-ad-1329663938259-2' style='width: 160px; height: 600px;' class="fr">
+				<script type='text/javascript'>
+					googletag.cmd.push(function () { googletag.display('div-gpt-ad-1329663938259-2'); });
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+</div>

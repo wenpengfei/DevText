@@ -1,0 +1,67 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@model PagedList<Codingwell.DevText.Model.Entities.Bookmark>
+@{
+	ViewBag.Title = "我的收藏";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a>»<a href="/home/bookmark">收藏</a>» 我的收藏
+}
+<div class="fl user_left">
+	@{Html.RenderAction("LeftNavigtion", "UserNavigation");}
+</div>
+<div class="fr user_right">
+	<h1 class="user_title">
+		我的收藏</h1>
+	<div class="user_tab">
+		<ul>
+			<li class="now"><a href="/home/bookmark">我的收藏</a></li>
+			<li><a href="/home/bookmark">我的标签</a></li>
+			<li><a href="/home/bookmark">热门收藏</a></li>
+			<li><a href="/home/bookmark">添加收藏</a></li>
+		</ul>
+	</div>
+	<div class="user_con">
+		<div class="fl">
+			<div class="user_con_left" style="display: block">
+				<ul class="web_col_list">
+					@foreach (var item in Model) { 
+				<li>
+						<h2><a href="@item.TargetUrl" class="color_blue" target="_blank">@item.Title</a></h2>
+						<div class="web_col_detail">@item.Remark</div>
+						<div class="web_col_link"><a href="@item.TargetUrl" class="color_blue" target="_blank">@item.TargetUrl</a></div>
+						<div class="web_col_info">
+							<span>收藏于 2分钟前</span><span class="web_col_icon">1人收藏</span><a href="#" class="web_col_icon color_blue">二手交易</a>
+							<a href="#" class="color_blue">修改</a><a href="#" class="color_blue">删除</a></div>
+					</li>
+	 }
+				</ul>
+				<div class="depage">@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page", CssClass = BarStyle.flickr.ToString(), NumericPagerItemCount = 7 })</div>
+			</div>
+		</div>
+		<div class="fr user_con_right">
+			<div class="web_col_operate">
+				» <a href="#" class="color_blue">添加新网摘</a><br />
+				» <a href="#" class="color_blue">未加标签的网摘</a><br />
+				» <a href="#" class="color_blue">私有网摘</a>
+			</div>
+			<div class="web_col_search">
+				<b>网摘搜索</b>
+				<div class="web_col_search_con">
+					<span class="fl">
+						<input type="text" /></span><span class="fr"><input type="submit" value="搜索" class="butn_save" /></span></div>
+				<div class="clearfix">
+				</div>
+			</div>
+			<div class="web_col_tag">
+				<b>常用标签</b>
+				<div class="web_col_tag_con">
+					<a href="#" class="color_blue font_b">网页设计(210)</a><br />
+					<a href="#">前端交互设计(20)</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+</div>

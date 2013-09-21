@@ -1,0 +1,31 @@
+﻿@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create</title>
+</head>
+<body>
+	<div>
+		<div>
+			<label class="label">
+				分类：</label>@Html.DropDownList("ddlChannel")</div>
+		<div>
+			<label class="label">
+				名称：</label>@Html.TextBox("txtActionName", "", new { @class = "text-input w200" })</div>
+		<div>
+			<label class="label">
+				值：</label>@Html.TextBox("txtActionValue", "", new { @class = "text-input w200" })</div>
+		<div>
+			<label class="label">
+				页面：</label>@Html.TextBox("txtPageUrl", "", new { @class = "text-input wp80" })</div>
+		<div>
+			<input type="checkbox" checked="checked" id="cbCreateContinue" />选中继续创建</div>
+		<div>
+			<input type="button" value="提交" id="btnCreate"  onclick="Submit();"/>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="取消" id="btnCancel" onclick="Cancel();"/></div>
+	</div>
+	<input type="hidden" id="hidActionID" value="0" />
+</body>
+</html>

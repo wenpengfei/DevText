@@ -1,0 +1,77 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Codingwell.DevText.Model.Entities.Question>
+@{
+	ViewBag.Title = "问答";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » <a href="/home/question">问答</a>
+» 全站
+}
+<div class="fl user_left">
+	@{Html.RenderAction("LeftNavigtion", "UserNavigation");}
+</div>
+<div class="fr user_right">
+	<h1 class="user_title">
+		全站</h1>
+	<div class="user_tab">
+		<ul>
+			<li class="now"><a href="/home/question/index">全站</a></li>
+			<li><a href="/home/question/index">我感兴趣的</a></li>
+			<li><a href="/home/question/index">我擅长的</a></li>
+			<li><a href="/home/question/index">提问</a></li>
+		</ul>
+	</div>
+	<div class="fl">
+		<div class="user_con_left">
+			<ul class="answer_list">
+				@foreach (var question in Model) {
+					<li>
+						<div class="fl answer_count">
+							<span class="answer_num color_org font_b">@question.QuestionAnswers.Count</span>
+							回复
+						</div>
+						<div class="fr">
+							<div class="answer_title">
+								<span class="fl score font_b color_org">100<img src="/skin/basic/images/icn_ps.gif"
+									width="12" height="11" align="absmiddle" /></span>
+								<h2 class="fl">
+									<a href="/question/detail/@question.ID" class="color_blue font_b">@question.Title</a></h2>
+							</div>
+							<div class="answer_text">@question.Summary</div>
+							<div class="answer_tag">
+								<span class="fl"><a href="#">sns架构</a><a href="#">文献</a><a href="#">英文</a></span>
+								<span class="fr">
+									<img src="/skin/basic/images/noavatar_small.gif" width="30" height="30" align="left" /><a
+										href="#" class="color_blue">@question.User.NickName</a><br />
+									浏览(11) 8小时前 </span>
+							</div>
+						</div>
+						<div class="clearfix">
+						</div>
+					</li>
+	}
+			</ul>
+			<div class="depage">@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page", CssClass = BarStyle.flickr.ToString(), NumericPagerItemCount = 7 })</div>
+		</div>
+	</div>
+	<div class="fr user_con_right">
+		<div class="web_col_search">
+			<b>问题搜索</b>
+			<div class="web_col_search_con">
+				<span class="fl">
+					<input type="text" /></span><span class="fr"><input type="submit" value="搜索" class="butn_save" /></span></div>
+			<div class="clearfix">
+			</div>
+		</div>
+		<div class="web_col_tag">
+			<b>热门标签</b>
+			<div class="web_col_tag_con">
+				<a href="#" class="color_blue font_b">网页设计(210)</a><br />
+				<a href="#">前端交互设计(20)</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+</div>

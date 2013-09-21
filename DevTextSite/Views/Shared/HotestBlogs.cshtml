@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Codingwell.DevText.Model.Entities.Article>
+<ul>
+@foreach (var article in Model) {
+	<li><a href="/blogs/detail/@article.ID" target="_blank">@article.Title</a></li>
+}
+</ul>

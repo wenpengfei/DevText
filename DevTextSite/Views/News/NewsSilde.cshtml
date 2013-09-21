@@ -1,0 +1,28 @@
+﻿<div class="h_list_item">
+	<div class="title_blue">
+		<h2>
+			阅读最多</h2>
+	</div>
+	@{Html.RenderAction("HotestNews", "Shared");}
+</div>
+<div class="h_list_item" style="margin-top: 10px;">
+	<div class="title_blue">
+		<h2>
+			推荐资讯</h2>
+	</div>
+	@{Html.RenderAction("UpestNews", "Shared");}
+</div>
+<div class="h_list_item" style="margin-top: 10px;">
+	<div class="title_blue">
+		<h2>
+			热门标签</h2>
+	</div>
+	<div class="keywords">
+		<a href="#" class="color_blue">sql server</a><a href="#">javascript</a><a href="#"
+			class="color_blue font_b font_size_14">WEB前端</a><a href="#">.net技术</a><br />
+		<a href="#" class="color_blue font_b font_size_16">软件工程</a><a href="#">C#</a><a href="#"
+			class="color_blue font_b">网站开发</a><a href="#">CSS</a><br />
+		<a href="#" class="color_blue font_size_16">HTML5</a><a href="#">数据库</a><br />
+		<a href="#" class="color_org font_size_14">博客园专区</a>
+	</div>
+</div>

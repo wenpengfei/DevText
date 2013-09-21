@@ -1,0 +1,48 @@
+﻿@model Codingwell.DevText.Model.ViewModel.UserHomeModel
+@using Webdiyer.WebControls.Mvc
+@{
+	if (!string.IsNullOrEmpty(Request.QueryString["page"])) {
+		ViewBag.Title = Model.CurrentUser.NickName + "的文章 - 第" + Request.QueryString["page"] + "页";
+	} else {
+		ViewBag.Title = Model.CurrentUser.NickName + "的文章";
+	}
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » <a href="/user/@Model.CurrentUser.UserID/">@Model.CurrentUser.NickName&nbsp;的文章</a>
+}
+<div class="fl l2_left">
+	<div class="user_tab mt5">
+		<ul>
+			<li><a href="/user/@Model.CurrentUser.UserID/questions">@Model.CurrentUser.Questions.Count
+				个提问</a></li>
+			<li class="now"><a href="/user/@Model.CurrentUser.UserID/blogs/">@Model.CurrentUser.Articles.Count
+				篇文章</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/news/">@Model.CurrentUser.News.Count
+				篇新闻</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/answers/">个回答</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/bookmarks/">@Model.CurrentUser.Bookmarks.Count
+				个收藏</a></li>
+		</ul>
+	</div>
+	<ul class="l2_list">
+		@foreach (var article in Model.Articles) {
+			<li>
+				<h2>
+					<a class="color_blue" href="/blogs/detail/@article.ID/@article.Path" target="_blank">@article.Title</a></h2>
+				<div class="l2_list_text">
+					@Html.Raw(article.Summary)
+					<p class="send_info"><span>发表于 @article.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span><span class="read">@article.PageViewCount 次浏览</span></p>
+				</div>
+				<div class="clearfix">
+				</div>
+			</li>
+  }
+	</ul>
+	<div class="depage">@Html.Pager(Model.Articles, new PagerOptions { PageIndexParameterName = "page", NumericPagerItemCount = 7 })</div>
+</div>
+<div class="fr l2_right">
+	@{Html.RenderAction("UserInfo", "User");}
+</div>
+<div class="clearfix">
+</div>

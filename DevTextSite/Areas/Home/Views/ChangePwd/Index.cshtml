@@ -1,0 +1,63 @@
+﻿@{
+	ViewBag.Title = "更改密码";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » <a href="/home/personal">个人资料</a>
+» 更改密码
+}
+<div id="homewapper">
+	<div class="homeleft">
+		@{Html.RenderAction("LeftNavigtion", "UserNavigation");}
+	</div>
+	<div class="homeright">
+		<h1>
+			更改密码</h1>
+		<ul class="f_tab">
+			<li class="cur_tab"><a href="/home/changepwd/index">更改密码</a></li>
+		</ul>
+		<div class="clear">
+		</div>
+		<div class="lgf">
+			<p>
+				<label>
+					原密码：</label>
+				@Html.Password("txtPassword", "", new { @class = "text-input w200" })</p>
+			<p>
+				<label>
+					新密码：</label>@Html.Password("txtPasswordNew", "", new { @class = "text-input w200" })</p>
+			<p>
+				<label>
+					确认新密码：</label>@Html.Password("txtPasswordNew2", "", new { @class = "text-input w200" })</p>
+			<p>
+				<button id="btnOK" class="pn" onclick="UpdatePwd();">
+					<span>确定修改</span></button></p>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>
+<script type="text/javascript">
+	function UpdatePwd() {
+		if ($.trim($("#txtPassword").val()) == "" || $.trim($("#txtPassword").val()) == null) {
+			alert("请输入原密码");
+			return;
+		}
+		if ($.trim($("#txtPasswordNew").val()) == "" || $.trim($("#txtPasswordNew").val()) == null) {
+			alert("请输入新密码");
+			return;
+		}
+		if ($.trim($("#txtPasswordNew").val()) != $.trim($("#txtPasswordNew2").val())) {
+			alert("新密码两次输入不一致");
+			return;
+		}
+		$.post("/home/changepwd/submitupdate", { opwd: $.trim($("#txtPassword").val()), npwd: $.trim($("#txtPasswordNew").val()) }, function (data) {
+			if (data.result) {
+				alert(data.message);
+				location.replace("/site/login");
+			} else {
+				alert(data.message);
+			}
+		}, "json");
+	}
+</script>

@@ -1,0 +1,39 @@
+﻿@{
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	if (false) { 
+	<script src="/Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>
+	}
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 网站管理
+}
+<div id="homewapper">
+	<div class="sysleft">
+		@{Html.RenderAction("LeftNavigation", "SysNavigation");}
+	</div>
+	<div class="sysright">
+		<h2>
+			创建角色</h2>
+		<div>
+			<label>
+				角色名称：</label>@Html.TextBox("txtRoleName", "", new { @class = "text-input wp95" })</div>
+		<div>
+		<label>角色动作</label>
+		@foreach (var actionchannel in (IEnumerable<Codingwell.DevText.Model.Entities.ActionChannel>)ViewData["AllChannels"]) { 
+		<label>@actionchannel.Name</label>
+	  <div>@foreach (var action in actionchannel.Actions) { 
+		<input type="checkbox" id="@action.ID" />@action.ActionName
+		}</div>
+  }
+  </div>
+		<div>
+			<input type="checkbox" checked="checked" id="cbCreateContinue" />选中继续创建</div>
+		<div>
+			<input type="button" value="创建" id="btnCreate" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="/sysadmin/role/list"
+				class="blue">取消返回</a></div>
+	</div>
+	<div class="clear">
+	</div>
+</div>
+

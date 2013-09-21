@@ -1,0 +1,48 @@
+﻿@{
+	ViewBag.Title = "动作列表";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 网站管理
+}
+
+<div id="homewapper">
+<div class="sysleft">
+@{Html.RenderAction("LeftNavigation", "SysNavigation");}
+</div>
+<div class="sysright">
+<div id="userList">
+		<div id="infoWrapper">
+			<table class="data-box" id="dataGrid">
+				<caption>
+					动作列表&nbsp;&nbsp;<a href="javascript:CreateAction();" class="blue">创建动作</a></caption>
+				<thead>
+					<tr class="border-in">
+						<th class="w160">名称</th>
+						<th class="w160">值</th>
+						<th>页面</th>
+						<th class="w30">状态</th>
+						<th class="w60">操作</th>
+					</tr>
+				</thead>
+				<!--
+				<tr>
+					<td>{Name}</td>
+					<td>{Value}</td>
+					<td>{PageUrl}</td>
+					<td>{State}</td>
+					<td>{Operation}</td>
+				</tr>
+			-->
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<div id="modeldialogdiv" style="display:none;"></div>
+</div>
+<script type="text/javascript" src="/Scripts/jquery.databind.js"></script>
+<script type="text/javascript" src="/scripts/page/actionedit.js"></script>
+

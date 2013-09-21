@@ -1,0 +1,22 @@
+﻿@model IList<Codingwell.DevText.Model.Entities.Article>
+<div class="h_news_con">
+	
+   @{if (Model.Count > 0) { 
+		 <dl>
+		 <dt><a href="/blogs/detail/@Model[0].ID/@Model[0].Path" target="_blank">@Model[0].Title</a></dt>
+		 <dd>@Html.Raw(Model[0].Summary)</dd>
+		 </dl>
+	   <ul>
+		@{for (int i = 1; i < Model.Count; i++) {
+		var cate = Model[i].ArticleCategories.FirstOrDefault();
+		if (cate == null) {
+			<li><a href="#">【暂无归类】</a><a href="/blogs/detail/@Model[i].ID/@Model[i].Path" target="_blank" >@Model[i].Title</a></li>
+		} else { 
+		<li><a href="#">【@cate.Name】</a><a href="/blogs/detail/@Model[i].ID/@Model[i].Path" target="_blank" >@Model[i].Title</a></li>
+		}
+	}
+	 }
+	   </ul>
+	 }
+   }
+</div>

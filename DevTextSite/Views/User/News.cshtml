@@ -1,0 +1,58 @@
+﻿@model Codingwell.DevText.Model.ViewModel.UserHomeModel
+@using Webdiyer.WebControls.Mvc
+@{
+	if (!string.IsNullOrEmpty(Request.QueryString["page"])) {
+		ViewBag.Title = Model.CurrentUser.NickName + "的资讯 - 第" + Request.QueryString["page"] + "页";
+	} else {
+		ViewBag.Title = Model.CurrentUser.NickName + "的资讯";
+	}
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » <a href="/user/@Model.CurrentUser.UserID">@Model.CurrentUser.NickName&nbsp;的资讯</a>
+}
+<div class="fl l2_left">
+	<div class="user_tab mt5">
+		<ul>
+			<li><a href="/user/@Model.CurrentUser.UserID/questions">@Model.CurrentUser.Questions.Count 个提问</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/blogs/">@Model.CurrentUser.Articles.Count 篇文章</a></li>
+			<li class="now"><a href="/user/@Model.CurrentUser.UserID/news/">@Model.CurrentUser.News.Count 篇资讯</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/answers/">个回答</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/bookmarks/">@Model.CurrentUser.Bookmarks.Count 个收藏</a></li>
+		</ul>
+	</div>
+	<ul class="l2_list">
+		@foreach (var article in Model.News) {
+			<li>
+				<h2>
+					<a href="/news/detail/@article.ID/@article.Path" target="_blank" class="color_blue">@article.Title</a></h2>
+				@{if (article.TopicID.HasValue) {
+					<div class="fr news_list_pic">
+						<a href="/news/topic/@article.TopicID">
+							<img src="@article.NewsTopic.FilePath" alt="@article.NewsTopic.Name" /></a></div>
+	  }
+				}
+				<div class="l2_list_text">
+					<p>@Html.Raw(article.Summary)</p>
+					<p class="send_info">
+						<a href="/user/@article.CreatorID/" class="color_blue">@article.User.NickName</a><span>发表于
+							@article.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span><span class="read">@article.PageViewCount
+								次浏览</span><span class="tag">
+									@foreach (Codingwell.DevText.Model.Entities.NewsCategory cate in article.NewsCategories) {
+										<a href="/news/category/@cate.ID"  class="web_col_icon color_blue" >@cate.Name</a>
+		 }
+								</span>
+					</p>
+				</div>
+				<div class="clearfix">
+				</div>
+			</li>
+  }
+	</ul>
+	<div class="depage">@Html.Pager(Model.News, new PagerOptions { PageIndexParameterName = "page", CssClass = BarStyle.flickr.ToString(), NumericPagerItemCount = 7 })</div>
+</div>
+<div class="fr l2_right">
+	@{Html.RenderAction("UserInfo", "User");}
+</div>
+<div class="clearfix">
+</div>

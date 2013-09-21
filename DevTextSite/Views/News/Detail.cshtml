@@ -1,0 +1,52 @@
+﻿@model Codingwell.DevText.Model.Entities.News
+@{
+	ViewBag.Title = Model.Title;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section HeaderSection{
+	<meta name="keywords" content="@Model.MetaKeywords" />
+	<meta name="description" content="@Model.MetaDescription"/>
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » <a href="/news/">业内资讯</a> » @Model.Title
+}
+<div class="fl l2_left">
+	<div class="news_essay">
+		<div class="essay_title">
+			<h1>@Model.Title</h1>
+		</div>
+		<div class="essay_text">@Html.Raw(Model.ArticleContent)</div>
+		<div class="essay_from">
+			<div class="fl share">
+				<div id="ckepop">
+					<a class="jiathis_button_tsina"></a><a class="jiathis_button_renren"></a><a class="jiathis_button_kaixin001">
+					</a>
+				</div>
+				<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+			</div>
+			<div class="fl">
+				<p>
+					<a version="1.0" class="qzOpenerDiv" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_likeurl"
+						target="_blank">赞</a><script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111107&style=3&showcount=1&width=130&height=30"
+							charset="utf-8" defer="defer"></script></p>
+			</div>
+			<div class="fr">
+				<p>
+					<a href="/user/@Model.User.UserID">@Model.User.NickName</a> 发布于：@Model.LastChanged.ToString("yyyy-MM-dd HH:mm")
+					@Model.PageViewCount 次阅读 来自：<a href="@(string.IsNullOrEmpty(Model.WebFromAddress) ? "#" : Model.WebFromAddress)" target="_blank">@Model.WebFrom</a></p>
+			</div>
+			<div class="clearfix">
+			</div>
+		</div>
+		<div id="div-gpt-ad-1329663938259-4" style="text-align:center;">
+			<script type="text/javascript">
+				googletag.cmd.push(function () { googletag.display('div-gpt-ad-1329663938259-4'); });
+			</script>
+		</div>
+	</div>
+</div>
+<div class="fr l2_right">
+	@{Html.RenderAction("NewsSilde", "News");}
+</div>
+<div class="clearfix">
+</div>

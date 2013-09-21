@@ -1,0 +1,28 @@
+﻿@{var user = (Codingwell.DevText.Model.Entities.User)ViewData["User"];}
+<div id="vcard">
+	<div id="avatar-area" class="avatar">
+		<img alt="头像" src="@user.Figureurl100" />
+		<p class="reputation" title="用户声望">
+			1</p>
+		<p class="rep-label">
+			声望</p>
+	</div>
+	<div id="info-area">
+		<p class="info">
+			用户昵称：<a href="/user/@user.UserID/">@user.NickName</a>
+		</p>
+		<p class="info">
+			用户类型：<span class="info-item">注册用户</span></p>
+		<p class="info">
+			注册时间：@user.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</p>
+		<p class="info">
+			最近登录：@user.LastLoginTime.ToString("yyyy-MM-dd HH:mm:ss")</p>
+	</div>
+	<div id="desp-area">
+	</div>
+</div>
+<div id="div-gpt-ad-1329663938259-5" style="width: 300px; height: 250px; margin-top: 10px;">
+	<script type='text/javascript'>
+		googletag.cmd.push(function () { googletag.display('div-gpt-ad-1329663938259-5'); });
+	</script>
+</div>

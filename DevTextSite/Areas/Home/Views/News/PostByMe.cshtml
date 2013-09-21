@@ -1,0 +1,62 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Codingwell.DevText.Model.Entities.News>
+@{
+	ViewBag.Title = "我的资讯";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » <a href="/home/news">资讯</a> » 我的资讯
+}
+<div class="fl user_left">
+	@{Html.RenderAction("LeftNavigtion", "UserNavigation");}
+</div>
+<div class="fr user_right">
+	<h1 class="user_title">
+		我的资讯</h1>
+	<div class="user_tab">
+		<ul>
+			<li><a href="/home/news/index">全站资讯</a></li>
+			<li class="now"><a href="/home/news/postbyme">我的资讯</a></li>
+			<li><a href="/home/news/postnews">投递资讯</a></li>
+		</ul>
+	</div>
+	<div class="user_con">
+		<div class="fl">
+			<div class="user_con_left">
+				<ul class="l2_list">
+					@foreach (var article in Model) {
+						<li>
+							<h2>
+								<a href="/news/detail/@article.ID/@article.Path" target="_blank" class="color_blue">@article.Title</a></h2>
+							@{if (article.TopicID.HasValue) {
+								<div class="fr news_list_pic">
+									<a href="/news/topic/@article.TopicID" target="_blank">
+										<img src="@article.NewsTopic.FilePath" alt="@article.NewsTopic.Name" /></a></div>
+		 }
+							}
+							<div class="l2_list_text">
+								<p>@Html.Raw(article.Summary)</p>
+								<p class="send_info">
+									<a href="/user/@article.CreatorID/" class="color_blue">@article.User.NickName</a><span>发表于
+										@article.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span><span class="read">@article.PageViewCount
+											次浏览</span><span class="tag">
+												@foreach (Codingwell.DevText.Model.Entities.NewsCategory cate in article.NewsCategories) {
+													<a href="/news/category/@cate.ID" class="web_col_icon color_blue">@cate.Name</a>
+			}
+											</span>
+								</p>
+							</div>
+							<div class="clearfix">
+							</div>
+						</li>
+	 }
+				</ul>
+				<div class="depage">@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page", CssClass = BarStyle.flickr.ToString(), NumericPagerItemCount = 7 })</div>
+			</div>
+		</div>
+		<div class="fr user_con_right">
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+</div>

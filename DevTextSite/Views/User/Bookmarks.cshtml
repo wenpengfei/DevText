@@ -1,0 +1,28 @@
+﻿@model Codingwell.DevText.Model.ViewModel.UserHomeModel
+@{
+	if (!string.IsNullOrEmpty(Request.QueryString["page"])) {
+		ViewBag.Title = Model.CurrentUser.NickName + "的收藏 - 第" + Request.QueryString["page"] + "页";
+	} else {
+		ViewBag.Title = Model.CurrentUser.NickName + "的收藏";
+	}
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/" >Devtext.com</a> » <a href="/user/@Model.CurrentUser.UserID/">@Model.CurrentUser.NickName&nbsp;的收藏</a> 
+}
+<div class="fl l2_left">
+	<div  class="user_tab mt5">
+		<ul>
+			<li ><a href="/user/@Model.CurrentUser.UserID/questions">@Model.CurrentUser.Questions.Count 个提问</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/blogs/">@Model.CurrentUser.Articles.Count 篇文章</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/news/">@Model.CurrentUser.News.Count 篇资讯</a></li>
+			<li><a href="/user/@Model.CurrentUser.UserID/answers/"> 个回答</a></li>
+			<li class="now"><a href="/user/@Model.CurrentUser.UserID/bookmarks/">@Model.CurrentUser.Bookmarks.Count 个收藏</a></li>
+		</ul>
+	</div>
+</div>
+<div class="fr l2_right">
+	@{Html.RenderAction("UserInfo", "User");}
+</div>
+<div class="clearfix">
+</div>

@@ -1,0 +1,137 @@
+﻿@model Codingwell.DevText.Model.ViewModel.HomeViewModel
+@{
+	ViewBag.Title = "";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 首页
+}
+<!-- tab切换开始 -->
+<div class="h_foucs fl">
+	<div class="title_gray">
+		<h2>推荐</h2>
+	</div>
+	<div class="tab_con" style="display: block">
+		@if (Model.FoucsContent.Count > 0) { 
+			<dl>
+				<dt><a href="@Model.FoucsContent[0].LinkUrl" title="@Model.FoucsContent[0].Title" class="h_foucs_h2">@Model.FoucsContent[0].Title</a></dt>
+				<dd>@Model.FoucsContent[0].ContentData</dd>
+			</dl>
+			<ul>
+				@{for (int i = 1; i < Model.FoucsContent.Count; i++) {
+					<li><a target="_blank" href="@Model.FoucsContent[i].LinkUrl" title="@Model.FoucsContent[i].Title">@Model.FoucsContent[i].Title</a></li>
+	  }
+				}
+			</ul>
+  }
+	</div>
+</div>
+<!-- 图片切换开始 -->
+<div class="h_foucs_sider fr">
+	<div class="title_gray">
+		<ul id="tab_title">
+			<li class="now"><a href="javascript:;">关注我们</a></li>
+			<li><a href="javascript:;">最多查看的主题</a></li>
+		</ul>
+	</div>
+	<div class="tab_con" style="display: block">
+	<div class="pt5px"></div>
+			<p>官方新浪微博：<a class="color_blue" target="_blank" href="http://weibo.com/devtext">http://weibo.com/devtext</a> </p>
+			<p>&nbsp;</p>
+			<p>官方腾讯微博：<a class="color_blue" target="_blank" href="http://t.qq.com/devtext">http://t.qq.com/devtext</a></p>
+			<p>&nbsp;</p>
+			<p>站长新浪微博：<a class="color_blue" target="_blank" href="http://weibo.com/822627678">http://weibo.com/alahfun</a></p>
+			<p>&nbsp;</p>
+			<p>我要一步一步往上爬，在最高点，乘着叶片往前飞</p>
+	</div>
+	<div class="tab_con">
+	
+	</div>
+	<script type="text/javascript">
+		$(function () {
+			$("#tab_title li").mouseover(
+					function () {
+						$(this).addClass("now").siblings().removeClass("now");
+						$(".h_foucs_sider .tab_con").eq($("#tab_title li").index(this)).show().siblings(".tab_con").hide();
+					}
+				)
+		})
+	</script>
+</div>
+<div class="clearfix">
+</div>
+<!-- 此段代码为清除浮动，不能删除 下同 -->
+<!-- 博客新闻 -->
+<div class="fl h_news">
+	<div class="title_blue">
+		<h2>
+			博文</h2>
+	</div>
+	<div class="h_news_con">
+		@if (Model.Articles.Count > 0) { 
+			<dl>
+				<dt><a href="@Model.Articles[0].LinkUrl" title="@Model.Articles[0].Title" class="h_foucs_h2">@Model.Articles[0].Title</a></dt>
+				<dd>@Model.Articles[0].ContentData</dd>
+			</dl>
+			<ul>
+				@{for (int i = 1; i < Model.Articles.Count; i++) {
+					<li><a target="_blank" href="@Model.Articles[i].LinkUrl" title="@Model.Articles[i].Title">@Model.Articles[i].Title</a></li>
+	  }
+				}
+			</ul>
+  }
+	</div>
+</div>
+<div class="h_list fr">
+	<div class="h_list_item">
+		<div class="title_blue">
+			<h2>
+				最热博文</h2>
+		</div>
+		@{Html.RenderAction("HotestBlogs", "Shared");}
+	</div>
+</div>
+<!-- 资讯新闻 -->
+<div class="fl h_news">
+	<div class="title_blue">
+		<h2>
+			资讯</h2>
+	</div>
+	<div class="h_news_con">
+	@if (Model.News.Count > 0) { 
+			<dl>
+				<dt><a href="@Model.News[0].LinkUrl" title="@Model.News[0].Title" class="h_foucs_h2">@Model.News[0].Title</a></dt>
+				<dd>@Model.News[0].ContentData</dd>
+			</dl>
+			<ul>
+				@{for (int i = 1; i < Model.News.Count; i++) {
+					<li><a target="_blank" href="@Model.News[i].LinkUrl" title="@Model.News[i].Title">@Model.News[i].Title</a></li>
+	  }
+				}
+			</ul>
+  }
+  </div>
+</div>
+<!-- 首页新闻列表 -->
+<div class="h_list fr">
+	<div class="h_list_item">
+		<div class="title_blue">
+			<h2>
+				最热资讯</h2>
+		</div>
+		@{Html.RenderAction("HotestNews", "Shared");}
+	</div>
+</div>
+<div class="clearfix">
+</div>
+<div class="flink">
+	<div class="title_blue">
+		<h2>
+			友情链接</h2>
+	</div>
+	<div class="flink_list">
+		@foreach (var link in Model.Links) { 
+			<a href="@link.LinkUrl" target="_blank">@link.Title</a>
+  }
+	</div>
+</div>

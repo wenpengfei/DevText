@@ -1,0 +1,41 @@
+﻿<dl class="user_menu" id="home_nav">
+	<dt>
+		<h2>我的中心</h2>
+	</dt>
+	<dd>
+		<a href="/home/event">动静</a></dd>
+	<dd>
+		<a href="/home/blogs">博客</a></dd>
+	<dd>
+		<a href="/home/question">问答</a></dd>
+	<dd>
+		<a href="/home/news">业内资讯</a></dd>
+	<dd>
+		<a href="/home/bookmark">网摘收藏</a></dd>
+	<dd>
+		<a href="/home/personal">个人资料</a></dd>
+</dl>
+<script type="text/javascript">
+	$(document).ready(function () {
+		var href = location.href;
+		$(".user_menu dd").each(function (i, e) {
+			if (href.indexOf($("a", e).attr("href")) > 0) {
+				$(e).addClass("now");
+			}
+		});
+
+		/* Fixed Nav ------------- */
+		var offset_top = 60;
+		var headline_pos = $('#home_nav').offset();
+		$(window).scroll(function () {
+			var scroll_top = $(window).scrollTop();
+			if (scroll_top > (headline_pos.top - offset_top)) {
+				$('#home_nav').addClass('fixed');
+			}
+			else {
+				$('#home_nav').removeClass('fixed');
+			}
+		}); 
+
+	});
+</script>

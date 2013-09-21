@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2FB57A81-742F-4CAE-A3C9-36E1380E4C24}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Codingwell.DevText.Model</RootNamespace>
+    <AssemblyName>Codingwell.DevText.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\trunk\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcPager">
+      <HintPath>..\Lib\MvcPager.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Action.cs" />
+    <Compile Include="Entities\ActionChannel.cs" />
+    <Compile Include="Entities\Answer.cs" />
+    <Compile Include="Entities\Article.cs" />
+    <Compile Include="Entities\ArticleCategory.cs" />
+    <Compile Include="Entities\Bookmark.cs" />
+    <Compile Include="Entities\BuildLog.cs" />
+    <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\EventLog.cs" />
+    <Compile Include="Entities\HomeContent.cs" />
+    <Compile Include="Entities\News.cs" />
+    <Compile Include="Entities\NewsCategory.cs" />
+    <Compile Include="Entities\NewsTopic.cs" />
+    <Compile Include="Entities\OpenAuth.cs" />
+    <Compile Include="Entities\Question.cs" />
+    <Compile Include="Entities\QuestionAnswer.cs" />
+    <Compile Include="Entities\QuestionSupplement.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\SysLog.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Enumeration\HomecontentType.cs" />
+    <Compile Include="Enumeration\OpenAuthType.cs" />
+    <Compile Include="Enumeration\SysActions.cs" />
+    <Compile Include="Enumeration\SysRoles.cs" />
+    <Compile Include="Mapping\ActionChannelMap.cs" />
+    <Compile Include="Mapping\ActionMap.cs" />
+    <Compile Include="Mapping\AnswerMap.cs" />
+    <Compile Include="Mapping\ArticleCategoryMap.cs" />
+    <Compile Include="Mapping\ArticleMap.cs" />
+    <Compile Include="Mapping\BookmarkMap.cs" />
+    <Compile Include="Mapping\BuildLogMap.cs" />
+    <Compile Include="Mapping\CommentMap.cs" />
+    <Compile Include="Mapping\EventLogMap.cs" />
+    <Compile Include="Mapping\HomeContentMap.cs" />
+    <Compile Include="Mapping\NewsCategoryMap.cs" />
+    <Compile Include="Mapping\NewsMap.cs" />
+    <Compile Include="Mapping\NewsTopicMap.cs" />
+    <Compile Include="Mapping\OpenAuthMap.cs" />
+    <Compile Include="Mapping\QuestionAnswerMap.cs" />
+    <Compile Include="Mapping\QuestionMap.cs" />
+    <Compile Include="Mapping\QuestionSupplementMap.cs" />
+    <Compile Include="Mapping\RoleMap.cs" />
+    <Compile Include="Mapping\SysLogMap.cs" />
+    <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="ModuleType.cs" />
+    <Compile Include="QUserJsonModel.cs" />
+    <Compile Include="Enumeration\AccountState.cs" />
+    <Compile Include="Enumeration\EntityState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ArticleDetail.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\News.cs" />
+    <Compile Include="ViewModel\UserModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

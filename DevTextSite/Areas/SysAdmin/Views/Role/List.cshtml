@@ -1,0 +1,66 @@
+﻿@{
+	ViewBag.Title = "角色列表";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section HeaderSection{<script type="text/javascript" src="/Scripts/jquery.databind.js"></script>}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 网站管理
+}
+
+<div id="homewapper">
+	<div class="sysleft">
+		@{Html.RenderAction("LeftNavigation", "SysNavigation");}
+	</div>
+	<div class="sysright">
+		<div id="userList">
+			<div id="infoWrapper">
+				<table class="data-box" id="dataGrid">
+					<caption>
+						角色列表&nbsp;&nbsp;<a href="/sysadmin/role/create" class="blue">创建角色</a></caption>
+					<thead>
+						<tr class="border-in">
+							<th>
+								<div>
+									名称</div>
+							</th>
+							<th>
+								<div>
+									描述</div>
+							</th>
+							<th><div>创建时间</div></th>
+							<th>
+								<div>
+									状态</div>
+							</th>
+							<th>
+								<div>
+									操作</div>
+							</th>
+						</tr>
+					</thead>
+					<!--
+				<tr>
+					<td>{Name}</td>
+					<td>{Description}</td>
+					<td>{CreateTime}</td>
+					<td>{State}</td>
+					<td>{Operation}</td>
+				</tr>
+			-->
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#dataGrid").bindTable("/sysadmin/role/getrolelist", function (data) {
+			$("#dataGrid > tbody > tr:even").addClass("even");
+			$("#dataGrid > tbody > tr:odd").addClass("odd");
+		});
+	});
+</script>

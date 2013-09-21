@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
+			xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
+			enableLocalization="true" >
+
+	<mvcSiteMapNode title="首页" controller="Site" action="Index" changeFrequency="Daily" updatePriority="Absolute_100">
+		<mvcSiteMapNode title="关于我们" controller="Site" action="Info"/>
+		<mvcSiteMapNode title="联系我们" controller="Site" action="ContactUs"/>
+		<mvcSiteMapNode title="博客" controller="Blogs" action="Index" changeFrequency="Daily">
+			<mvcSiteMapNode title="文章详细" controller="Blogs" action="Detail" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.BlogDetailsDynamicNodeProvider, Codingwell.DevText.Controller"/>
+		</mvcSiteMapNode>
+		<mvcSiteMapNode title="资讯" controller="News" action="Index" changeFrequency="Daily">
+			<mvcSiteMapNode title="资讯详细" controller="News" action="Detail" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.NewsDetailsDynamicNodeProvider, Codingwell.DevText.Controller" />
+			<mvcSiteMapNode title="资讯分类" controller="News" action="Category" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.NewsCategoryDynamicNodeProvider, Codingwell.DevText.Controller" />
+			<mvcSiteMapNode title="资讯主题" controller="News" action="Topic" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.NewsTopicDynamicNodeProvider, Codingwell.DevText.Controller" />
+		</mvcSiteMapNode>
+		<mvcSiteMapNode title="问答" controller="Question" action="Index" changeFrequency="Daily"></mvcSiteMapNode>
+		<mvcSiteMapNode title="用户博客" controller="User" action="Blogs" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.UserDynamicNodeProvider, Codingwell.DevText.Controller" />
+		<mvcSiteMapNode title="用户资讯" controller="User" action="News" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.UserDynamicNodeProvider, Codingwell.DevText.Controller" />
+		<mvcSiteMapNode title="用户回答" controller="User" action="Answers" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.UserDynamicNodeProvider, Codingwell.DevText.Controller" />
+		<mvcSiteMapNode title="用户收藏" controller="User" action="Bookmarks" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.UserDynamicNodeProvider, Codingwell.DevText.Controller" />
+		<mvcSiteMapNode title="用户提问" controller="User" action="Questions" changeFrequency="Daily" dynamicNodeProvider="Codingwell.DevText.Controller.UserDynamicNodeProvider, Codingwell.DevText.Controller" />
+	</mvcSiteMapNode>
+</mvcSiteMap>

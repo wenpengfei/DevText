@@ -1,0 +1,81 @@
+﻿@{
+	ViewBag.Title = "签名";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » <a href="/home/personal">个人资料</a> » 签名
+}
+<div class="fl user_left">
+	@{Html.RenderAction("LeftNavigtion", "UserNavigation");}
+</div>
+<div class="fr user_right">
+	<h1 class="user_title">
+		签名</h1>
+	<div class="user_tab">
+		<ul>
+			<li><a href="/home/personal/index">基本信息</a></li>
+			<li><a href="/home/personal/contact">联系方式</a></li>
+			<li><a href="/home/personal/skill">技能构成</a></li>
+			<li  class="now"><a href="/home/personal/sign">签名</a></li>
+		</ul>
+	</div>
+	<div class="user_con">
+		<div class="fl">
+			<div class="user_con_left">
+				<table width="100%" class="user_info_table" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="tr_title">
+							&nbsp;
+						</td>
+						<td class="tr_content">
+							&nbsp;
+						</td>
+						<td class="tr_see">
+							谁可以看到
+						</td>
+						<td class="ishome">
+							显示在首页
+						</td>
+					</tr>
+					<tr>
+						<td class="tr_title" valign="top">
+							自我签名：
+						</td>
+						<td class="tr_content">
+							<textarea style="margin: 10px 0px; border: 1px solid #ccc; width: 264px; height: 100px;"></textarea>
+						</td>
+						<td class="tr_see" valign="top" style="padding-top: 12px;">
+							<select>
+								<option value="1">任何人</option>
+								<option value="2">仅好友</option>
+								<option value="3">保密</option>
+							</select>
+						</td>
+						<td class="ishome" valign="top" style="padding-top: 15px;">
+							<input type="checkbox" checked="checked" />
+						</td>
+					</tr>
+				</table>
+				<p class="row_save">
+					<input type="submit" value="保存" class="butn_save" /><span class="save_tip">保存成功</span></p>
+			</div>
+		</div>
+		<!-- 成功保存提示 -->
+		<script>
+			$(function () {
+				$(".butn_save").click(
+                        function () {
+                        	$(".save_tip").attr("style", "");
+                        	$(this).siblings(".save_tip").show(function () {
+                        		$(this).animate({ "opacity": "0" }, 500);
+                        	});
+                        }
+                    )
+			})
+		</script>
+		<!-- 成功保存提示 -->
+		<div class="fr user_con_right">
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>

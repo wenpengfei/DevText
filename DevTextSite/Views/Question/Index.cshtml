@@ -1,0 +1,73 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Codingwell.DevText.Model.Entities.Question>
+@{
+	ViewBag.Title = "你问，大家来答";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/" >Devtext.com</a> » <a href="/question">问答</a>
+}
+	<!-- 2级左边 -->
+	<div class="fl l2_left">
+		<ul class="answer_list">
+		@foreach (var question in Model) {
+		<li>
+				<div class="fl answer_count">
+					<span class="answer_num color_org font_b">@question.QuestionAnswers.Count</span>
+					回复
+				</div>
+				<div class="fr">
+					<div class="answer_title"><span class="fl score font_b color_org">100<img src="/skin/basic/images/icn_ps.gif" width="12" height="11" align="absmiddle" /></span>
+					<h2 class="fl"><a href="/question/detail/@question.ID" class="color_blue font_b">@question.Title</a></h2></div>
+					<div class="answer_text">@question.Summary</div>
+					<div class="answer_tag">
+						<span class="fl"><a href="#">sns架构</a><a href="#">文献</a><a href="#">英文</a></span>
+						<span class="fr">
+							<img src="/skin/basic/images/noavatar_small.gif" width="30" height="30" align="left" /><a href="#" class="color_blue">@question.User.NickName</a><br />浏览(11) 8小时前 
+						</span>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</li>
+  }
+		</ul>
+		<div class="depage">@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page", CssClass = BarStyle.flickr.ToString(), NumericPagerItemCount = 7 })</div>
+	</div>
+	<!-- 2级右边 -->
+	<div class="fr l2_right">
+		<div class="h_list_item">
+			<div class="title_blue"><h2>阅读最多</h2></div>
+			<ul>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+			</ul>
+		</div>
+		<div class="h_list_item" style="margin-top:10px;">
+			<div class="title_blue"><h2>推荐资讯</h2></div>
+			<ul>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+				<li><a href="#">福布斯：Facebook如何花掉100亿美元IPO融资</a></li>
+			</ul>
+		</div>
+		<div class="h_list_item" style="margin-top:10px;">
+			<div class="title_blue"><h2>热门标签</h2></div>
+			<div class="keywords">
+				<a href="#" class="color_blue">sql server</a><a href="#">javascript</a><a href="#" class="color_blue font_b font_size_14">WEB前端</a><a href="#">.net技术</a><br />
+				<a href="#" class="color_blue font_b font_size_16">软件工程</a><a href="#">C#</a><a href="#" class="color_blue font_b">网站开发</a><a href="#">CSS</a><br />
+				<a href="#"  class="color_blue font_size_16">HTML5</a><a href="#">数据库</a><br />
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+

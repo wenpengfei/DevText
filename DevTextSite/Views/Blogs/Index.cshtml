@@ -1,0 +1,45 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Codingwell.DevText.Model.Entities.Article>
+@{
+	if (!string.IsNullOrEmpty(Request.QueryString["page"])) {
+		ViewBag.Title = "博客 - 第" + Request.QueryString["page"] + "页";
+	} else {
+		ViewBag.Title = "博客";
+	}
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/" id="home">Devtext.com</a> » 博客
+}
+<div class="fl l2_left">
+	<ul class="l2_list blog_list">
+		@foreach (var article in Model) {
+			<li>
+				<h2>
+					<a class="color_blue" href="/blogs/detail/@article.ID/@article.Path" target="_blank">@article.Title</a></h2>
+				<div class="fl blog_tx">
+					<a href="/user/@article.CreatorID" target="_blank">
+						<img alt="@article.User.NickName 的头像" class="blogavatar" src="@article.User.Figureurl50" onerror="this.onerror=null;this.src='/skin/basic/images/noavatar_small.gif';" /></a></div>
+				<div class="l2_list_text">
+					@Html.Raw(article.Summary)
+					<p class="send_info">
+						<a href="/user/@article.CreatorID/"  class="blue">@article.User.NickName</a><span>发表于
+							@article.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span><span class="read">@article.PageViewCount
+								次浏览</span></p>
+				</div>
+				<div class="clearfix">
+				</div>
+			</li>
+  }
+	</ul>
+	<div class="depage">@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page", NumericPagerItemCount = 7 })</div>
+</div>
+<div class="fr l2_right">
+	<div id='div-gpt-ad-1329663938259-5' style='width: 300px; height: 250px;'>
+		<script type='text/javascript'>
+			googletag.cmd.push(function () { googletag.display('div-gpt-ad-1329663938259-5'); });
+		</script>
+	</div>
+</div>
+<div class="clearfix">
+</div>

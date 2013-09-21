@@ -1,0 +1,18 @@
+﻿<div class="uc_app">
+	<h2>网站管理</h2>
+	<ul id="uc_appnav">
+	<li ><a href="/sysadmin/user/list">用户列表</a></li>
+	<li><a href="/sysadmin/role/list">角色列表</a></li>
+	<li><a href="/sysadmin/action/list">动作列表</a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		var href = location.href;
+		$("#uc_appnav li").each(function (i, e) {
+			if (href.indexOf($("a", e).attr("href")) > 0) {
+				$(e).addClass("current");
+			}
+		});
+	});
+</script>

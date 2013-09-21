@@ -1,0 +1,41 @@
+﻿@{
+	ViewBag.Title = "绑定、创建用户";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 验证账户
+}
+<div id="floatlayout_login" class="blr">
+	<div id="c cl">
+		<div class="lgf">
+			<h2>
+				验证账户</h2>
+			<p>
+				<label>
+					邮箱：<span style="color: Red;">(请填写真实常用的邮箱，有激活码给您)</span></label>@Html.TextBox("txtEmail", "", new { @class = "text-input w200" })</p>
+			<input type="button" value="加入并验证" onclick="UpdateEmail();" class="pn" />
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function UpdateEmail() {
+		var loginurl = request.QueryString("returnurl");
+		var strMail = $.trim($("#txtEmail").val());
+		if (strMail.length == 0) {
+			alert("邮件不能为空");
+			return false;
+		}
+		$.post("/site/updateemail", { email: strMail }, function (data) {
+			if (data.result == true) {
+				alert(data.message);
+				loginurl = loginurl || "/site/activeuser";
+				location.replace(loginurl);
+			} else {
+				alert(data.message);
+				return false;
+			}
+		}, "json");
+	}
+</script>

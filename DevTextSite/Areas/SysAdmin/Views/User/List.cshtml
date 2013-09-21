@@ -1,0 +1,79 @@
+﻿@{
+	ViewBag.Title = "用户列表";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section LocationPath{
+	<a class="title" href="/">Devtext.com</a> » 网站管理
+}
+
+<div id="homewapper">
+<div class="sysleft">
+@{Html.RenderAction("LeftNavigation", "SysNavigation");}
+</div>
+<div class="sysright">
+<div id="userList">
+		<div id="infoWrapper">
+			<table class="data-box" id="dataGrid">
+				<caption>
+					用户列表&nbsp;&nbsp;<a href="/sysadmin/user/create" class="blue">创建用户</a></caption>
+				<thead>
+					<tr class="border-in">
+						<th>
+							<div>
+								登录名</div>
+						</th>
+						<th>
+							<div>
+								昵称</div>
+						</th>
+						<th>
+							<div>
+								创建时间</div>
+						</th>
+						<th>
+							<div>
+								最后登录时间</div>
+						</th>
+						<th>
+							<div>
+								最后登录IP</div>
+						</th>
+						<th>
+							<div>
+								账户状态</div>
+						</th>
+						<th>
+							<div>
+								操作</div>
+						</th>
+					</tr>
+				</thead>
+				<!--
+				<tr>
+					<td>{LoginName}</td>
+					<td>{NickName}</td>
+					<td>{InsertTime}</td>
+					<td>{LastLoginTime}</td>
+					<td>{LastLoginIp}</td>
+					<td>{State}</td>
+					<td>{Operation}</td>
+				</tr>
+			-->
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+</div>
+<script type="text/javascript" src="/Scripts/jquery.databind.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#dataGrid").bindTable("/sysadmin/user/getuserlist", function (data) {
+			$("#dataGrid > tbody > tr:even").addClass("even");
+			$("#dataGrid > tbody > tr:odd").addClass("odd");
+		});
+	});
+</script>
